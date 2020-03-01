@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<p id="kx">1111</p>
+
+		<div>
+			<h1>诗歌</h1>
+			<ul id="list">
+				<li>aaa</li>
+				<li>bbb</li>
+				<li>ccc</li>
+			</ul>
+			<h4>作者</h4>
+		</div>
+
+		<script>
+			/**
+			 * 1.对象的获取，document.getElementById(),getElementsByTabName(),getElementsByClassName()
+			 * 2.对象的内容操作,innerHTML,innerText
+			 * 3.获取或修改对象的样式,style属性，className修改class
+			 * 4.获取或修改对象的属性,getAttribute(name),setAttribute(name,value);
+			 * 5.创建节点/附加节点/删除节点/复制节点
+			 * 6.节点的关系获取,parentNode,parentElement,children,childNodes
+			 */
+
+			var obj = document.getElementById('kx');
+			obj.innerHTML = '2222'; //改动为2222
+			obj.style.color = 'red';
+			obj.setAttribute('title', '这是一行文字');
+
+			//创建节点
+			var node = document.createElement('span');
+			node.innerHTML = 'two';
+
+			//附加节点
+			obj.appendChild(node);
+
+			//删除节点
+			obj.removeChild(node);
+
+			//获取父节点
+			var listNode = document.getElementById('list');
+			var pNode = listNode.parentNode; //父节点
+
+			//获取子节点
+			var childs1 = listNode.childNodes;
+			var childs2 = listNode.children;
+			console.log(childs1.length);
+			console.log(childs2.length);
+			
+			//兄弟节点
+			var nextNode = listNode.nextElementSibling;
+			nextNode.innerHTML = '作者：小明';
+		</script>
+	</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				height: 100vh;
+				overflow: hidden;
+			}
+
+			#pageList {
+
+				transition: 0.5s;
+			}
+
+			#pageList>div {
+				width: 100%;
+				height: 100vh;
+				position: relative;
+			}
+
+			#pageList>div>h1 {
+				text-align: center;
+				font-size: 48px;
+				line-height: 150px;
+				color: #fff;
+				margin: 0px;
+				text-align: center;
+			}
+
+			#page1 {
+				background-color: #CC0000;
+				z-index: 3;
+			}
+
+			#page2 {
+				background-color: #00CC00;
+				z-index: 2;
+			}
+
+			#page3 {
+				background-color: #0000CC;
+				z-index: 1;
+			}
+			
+			#page4 {
+				background-color: #ff6988;
+				z-index: 1;
+			}
+			
+			#page5 {
+				background-color: #3659f5;
+				z-index: 1;
+			}
+
+			.btnNextPage {
+				width: 100px;
+				text-align: center;
+				height: 30px;
+				line-height: 30px;
+				background-color: #FFFFFF;
+				position: absolute;
+				bottom: 50px;
+				left: 50%;
+				margin-left: -50px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="pageList">
+
+			<div id="page1">
+				<h1>第1页</h1>
+			</div>
+
+			<div id="page2">
+				<h1>第2页</h1>
+			</div>
+
+			<div id="page3">
+				<h1>第3页</h1>
+			</div>
+			
+			<div id="page4">
+				<h1>第4页</h1>
+			</div>
+			
+			<div id="page5">
+				<h1>第5页</h1>
+			</div>
+
+		</div>
+
+		<script>
+			/**
+			 * 实现移动端上滑下滑动
+			 * 移动端的手指滑动事件
+			 * touchstart
+			 * touchend
+			 * https://www.cnblogs.com/fengfan/p/4506555.html
+			 */
+			
+			var n = 1;//当前的页是第1页
+			var startY = 0;
+			var endY = 0;
+			var pageTotal = document.getElementById('pageList').children.length;
+			
+			//开始步骤,记录下开始时的Y轴坐标
+			document.body.addEventListener('touchstart',function(e){
+				startY = e.changedTouches[0].pageY;
+			});
+			
+			//结束步骤,记录下结束时的Y轴坐标
+			document.body.addEventListener('touchend',function(e){
+				endY = e.changedTouches[0].pageY;
+				
+				//判断是上滑动还是下滑动
+				if(endY-startY > 0){
+					//下滑
+					if(n<=1){
+						return;
+					}
+					n--;
+					var yPos = -(n-1)*100+'vh';
+					document.getElementById('pageList').style.transform = 'translateY('+yPos+')';
+				}else if(endY-startY<0){
+					//是否还能继续滑动
+					if(n>=pageTotal){
+						return;//跳出函数
+					}
+					//上滑
+					n++;
+					var yPos = -(n-1)*100+'vh';
+					document.getElementById('pageList').style.transform = 'translateY('+yPos+')';
+				}
+				
+			});
+			
+		</script>
+
+	</body>
+</html>

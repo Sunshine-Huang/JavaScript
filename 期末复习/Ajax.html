@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			
+			/**
+			 * Ajax是一种技术，一般用来异步向远程服务器进行数据请求
+			 * 请求 
+			 * 响应
+			 */
+			
+			//1.创建对象
+			var xmlHttp = new XMLHttpRequest();
+			
+			//4.响应信息的处理
+			xmlHttp.onreadystatechange = function(){
+				//status,readystate
+				if(xmlHttp.status=='200' && xmlHttp.readyState==4){
+					console.warn('请求已经完成，可以进行数据分析及处理')
+				}
+			}
+			
+			//2.打开网址
+			xmlHttp.open('GET','http://www.baidu.com');
+			
+			//3.传送
+			xmlHttp.send();
+			
+			///2.3请求过程,4为处理响应信息过程
+			
+		</script>
+	</body>
+</html>

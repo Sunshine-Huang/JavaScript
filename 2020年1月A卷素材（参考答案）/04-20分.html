@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <style type="text/css">
+        * {
+            font-size: 14px;
+            font-family: "微软雅黑";
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+        }
+        
+        img {
+            width: 160px;
+            height: 120px;
+        }
+        /*span{display: inline-block;}*/
+        
+        .imfor_top div {
+            height: 40px;
+            background-color: deepskyblue;
+            font-weight: bold;
+        }
+        
+        .imfor div {
+            height: 140px;
+            line-height: 120px;
+        }
+        
+        .imfor:hover {
+            background: RGB(238, 246, 255);
+        }
+        
+        .check,
+        .check_top {
+            width: 70px;
+        }
+        
+        .pudc,
+        .pudc_top {
+            width: 400px;
+        }
+        
+        .pices,
+        .pices_top {
+            width: 60px;
+        }
+        
+        .totle {
+            color: red;
+        }
+        
+        .num,
+        .num_top {
+            width: 90px;
+        }
+        
+        .num input {
+            width: 40px;
+        }
+        
+        .num span {
+            height: 23px;
+            width: 17px;
+            border: 1px solid #e5e5e5;
+            background: #f0f0f0;
+            text-align: center;
+            line-height: 23px;
+            color: #444;
+            cursor: pointer;
+        }
+        
+        .totle,
+        .totle_top {
+            width: 60px;
+        }
+        
+        .del,
+        .del_top {
+            width: 60px;
+            cursor: pointer;
+        }
+        
+        .imfor_top div,
+        .imfor div {
+            float: left;
+            border: 1px solid deepskyblue;
+            text-align: center;
+        }
+        
+        .imfor_top,
+        .imfor {
+            width: 800px;
+        }
+        
+        .foot {
+            float: inherit;
+        }
+        
+        #box,
+        #content_box {
+            width: 800px;
+            margin: 0 auto;
+        }
+        
+        .foot_add,
+        .foot_del {
+            float: left;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 14px;
+        }
+        
+        .foot {
+            width: 800px;
+            background-color: #eaeaea;
+        }
+        
+        .foot_tol,
+        .foot_cash {
+            float: right;
+            cursor: pointer;
+            width: 80px;
+            margin-top: 14px;
+            margin-left: 100px;
+        }
+        
+        #susum {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h3>购物车</h3>
+
+    <div id="box">
+        <div id="content_box">
+            <div class="imfor_top">
+                <div class="check_top">
+                    <input type="checkbox" id="all" />全选
+                </div>
+                <div class="pudc_top">商品</div>
+                <div class="pices_top">单价</div>
+                <div class="num_top">数量</div>
+                <div class="totle_top">小计</div>
+                <div class="del_top">操作</div>
+            </div>
+            <div class="imfor">
+                <div class="check">
+                    <input type="checkbox" class="Each" />
+                </div>
+                <div class="pudc"><img src="images/1.jpg" />Casio/卡西欧 EX-TR350</span>
+                </div>
+                <div class="pices">5999.8</div>
+                <div class="num"><span class="reduc">&nbsp;-&nbsp;</span><input type="text" value="1" /><span class="add">&nbsp;+</span></div>
+                <div class="totle">5999.8</div>
+                <div class="del">删除</div>
+            </div>
+            <div class="imfor">
+                <div class="check">
+                    <input type="checkbox" class="Each" />
+                </div>
+                <div class="pudc"><img src="images/2.jpg" /><span>Canon/佳能 PowerShot SX50 HS</span></div>
+                <div class="pices"> 3888.5</div>
+                <div class="num"><span class="reduc">&nbsp;-&nbsp;</span><input type="text" value="1" /><span class="add">&nbsp;+</span></div>
+                <div class="totle">3888.5</div>
+                <div class="del">删除</div>
+            </div>
+            <div class="imfor">
+                <div class="check">
+                    <input type="checkbox" class="Each" />
+                </div>
+                <div class="pudc"><img src="images/3.jpg" /><span>Sony/索尼 DSC-WX300</span></div>
+                <div class="pices">1428.5</div>
+                <div class="num"><span class="reduc">&nbsp;-&nbsp;</span><input type="text" value="1" /><span class="add">&nbsp;+</span></div>
+                <div class="totle">1428.5</div>
+                <div class="del">删除</div>
+            </div>
+            <div class="imfor">
+                <div class="check">
+                    <input type="checkbox" class="Each" />
+                </div>
+                <div class="pudc"><img src="images/4.jpg" /><span>Fujifilm/富士 instax mini 25</span></div>
+                <div class="pices">640.6</div>
+                <div class="num"><span class="reduc">&nbsp;-&nbsp;</span><input type="text" value="1" /><span class="add">&nbsp;+</span></div>
+                <div class="totle">640.6</div>
+                <div class="del">删除</div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="foot_tol"><span>合计：￥</span><span id="susum">0</span></div>
+        </div>
+    </div>
+
+
+    <script>
+        /**
+         *【分数：20】
+         * 按照要求补充完善程序（必须使用原生脚本，不能使用jQuery库实现）
+         * 1.实现全选/全不选(5分)
+         * 2.实现合计功能（选中的商品才进行合计）(6分)
+         * 3.实现减少增加数据功能(6分)
+         * 4.实现删除功能(3分)
+         * ---------------------------------------------------------------
+         */
+
+        var all = document.getElementById('all');
+
+        //获取所有的商品记录
+        function getProducts() {
+            return document.getElementsByClassName('imfor');
+        }
+
+        //获取所有的商品勾选按钮
+        function getChecks() {
+            return document.getElementsByClassName('Each');
+        }
+
+        //获取所有的减号按钮
+        function getReducs() {
+            return document.getElementsByClassName('reduc');
+        }
+
+        //获取所有的加号按钮
+        function getAdds() {
+            return document.getElementsByClassName('add');
+        }
+
+        //获取所有的删除按钮
+        function getDels() {
+            return document.getElementsByClassName('del');
+        }
+
+        //----------------------------------------------------------------
+
+        //获取商品勾选状态个数，status的值为true|false,true为勾选状态，false为未勾选状态
+        function getChecksNum(status) {
+            var allChecks = getChecks();
+            var num = 0;
+            for (var i = 0; i < allChecks.length; i++) {
+                if (allChecks[i].checked == status) {
+                    num++;
+                }
+            }
+            return num;
+        }
+        //获取所有已勾选的商品总价
+        function getTotalPrice() {
+            var products = getProducts();
+            var totalPrice = 0;
+            for (var i = 0; i < products.length; i++) {
+                var check = products[i].children[0].children[0].checked; //获取当前商品的勾选状态
+                var price = parseFloat(products[i].children[4].innerHTML); //获取当前商品的价格
+                if (check) {
+                    totalPrice += price;
+                }
+            }
+            return totalPrice;
+        }
+        //更新总价
+        function updateTotalPrice() {
+            var totalPrice = getTotalPrice();
+            document.getElementById('susum').innerHTML = totalPrice;
+        }
+
+        //======================================================================
+        //以上为系统提供的方法
+        //======================================================================
+
+        //全选/全不选
+        all.addEventListener('click', function() {
+            //获取所有的商品勾选按钮
+            //var allChecks = (1); //请在（1）填入正确的答案【2分】
+			var allChecks = getChecks(); //请在（1）填入正确的答案【2分】
+            for (var i = 0; i < allChecks.length; i++) {
+                //更新按钮的勾选状态
+                //(2).checked = this.checked; //请在（2）填入正确的答案【3分】
+				allChecks[i].checked = this.checked; //请在（2）填入正确的答案【3分】
+            }
+
+            //更新总价
+            updateTotalPrice();
+        });
+
+        //跟每个商品的复选按钮添加事件
+        var allChecks = getChecks();
+        for (var i = 0; i < allChecks.length; i++) {
+            allChecks[i].addEventListener('click', function() {
+                var allChecks = getChecks();
+                var checkTotal = allChecks.length; //获取按钮个数
+                var checkNum = getChecksNum(this.checked); //获取勾选或者取消勾选个数
+
+                //更新all的状态
+                if (checkTotal == checkNum) {
+                    all.checked = this.checked;
+                } else {
+                    all.checked = false;
+                }
+
+                //更新总价
+                updateTotalPrice();
+            });
+        }
+
+        //给减号添加事件
+        var allReducs = getReducs();
+        for (var i = 0; i < allReducs.length; i++) {
+            allReducs[i].addEventListener('click', function() {
+                var oldValue = parseFloat(this.nextElementSibling.value);
+                if (oldValue <= 0) {
+                    return;
+                } else {
+                    //this.nextElementSibling.value = (3); //请在（3）填入正确的答案【3分】
+					this.nextElementSibling.value = oldValue-1; //请在（3）填入正确的答案【3分】
+                }
+
+                //更新小计
+                //获取商品单价
+                //var danJia = parseFloat((4)); //请在（4）填入正确的答案【3分】
+				var danJia = parseFloat(this.parentNode.previousElementSibling.innerHTML); //请在（4）填入正确的答案【3分】
+                //获取商品数量
+                //var shuLiang = parseFloat((5)); //请在（5）填入正确的答案【3分】
+				var shuLiang = parseFloat(this.nextElementSibling.value); //请在（5）填入正确的答案【3分】
+                this.parentNode.nextElementSibling.innerHTML = danJia * shuLiang;
+
+                //当前商品是否勾选，若勾选则更新总价
+                var imfor = this.parentNode.parentNode;
+                var check = imfor.children[0].children[0].checked; //获取当前商品的勾选按钮状态
+                if (check) {
+                    //更新总价
+                    updateTotalPrice();
+                }
+            });
+        }
+
+        //给加号添加事件
+        var allAdds = getAdds();
+        for (var i = 0; i < allAdds.length; i++) {
+            allAdds[i].addEventListener('click', function() {
+                var oldValue = parseFloat(this.previousElementSibling.value);
+                this.previousElementSibling.value = oldValue + 1;
+
+                //更新小计
+                var danJia = parseFloat(this.parentNode.previousElementSibling.innerHTML);
+                var shuLiang = parseFloat(this.previousElementSibling.value);
+                this.parentNode.nextElementSibling.innerHTML = danJia * shuLiang;
+
+                //当前商品是否勾选，若勾选则更新总价
+                var imfor = this.parentNode.parentNode;
+                var check = imfor.children[0].children[0].checked; //获取当前商品的勾选按钮状态
+                if (check) {
+                    //更新总价
+                    updateTotalPrice();
+                }
+            });
+        }
+
+        //给删除添加事件
+        var allDels = getDels();
+        for (var i = 0; i < allDels.length; i++) {
+            allDels[i].addEventListener('click', function() {
+
+                //当前商品是否勾选，若勾选则更新总价
+
+                //获取商品所在的行元素imfor
+                //var imfor = (6); //请在（6）填入正确的答案【3分】
+				var imfor = this.parentNode; //请在（6）填入正确的答案【3分】
+                //移除元素
+                //imfor.parentNode.removeChild((7)); //请在（7）填入正确的答案【3分】
+				imfor.parentNode.removeChild(imfor); //请在（7）填入正确的答案【3分】
+                //更新总价
+                updateTotalPrice();
+            });
+        }
+    </script>
+
+</body>
+
+</html>

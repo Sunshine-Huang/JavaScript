@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="now"></div>
+    <script>
+        /**
+         * 【分数：10】
+         * 【实时显示当前系统日期时间】
+         * ---------------------------------------------------------------
+         * 请补充以下(1)~(5)处的代码，并将正确的代码填写入
+         */
+
+        function showTime() {
+            var today = new Date();
+            var year = today.getFullYear();
+            //var month = (1); //请在（1）填入正确的答案【3分】
+			var month = today.getMonth()+1; //请在（1）填入正确的答案【3分】
+            //var day = (2); //请在（2）填入正确的答案【2分】
+			var day = today.getDate(); //请在（2）填入正确的答案【2分】
+
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+
+            document.getElementById('now').innerHTML = '今天是' + year + '年' + month + '月' + day + '日 ' + h + ':' + m + ':' + s ;
+
+
+            //执行定时器
+           // (3) //请在（3）填入正确的答案【3分】
+		   setTimeout(showTime, 1000);
+        }
+
+        //var t = setTimeout(showTime, (4)); //（4）填入正确的答案【2分】
+		var t = setTimeout(showTime, 1000); //（4）填入正确的答案【2分】
+    </script>
+</body>
+
+</html>

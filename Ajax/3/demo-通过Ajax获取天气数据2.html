@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<style>
+			.c7d ul.t {
+				margin-left: 11px;
+			}
+
+			.c7d ul.t {
+				margin-left: 3px;
+				height: 265px;
+			}
+
+			.clearfix {
+				zoom: 1;
+			}
+
+			ul {
+				list-style: none;
+			}
+
+			ul {
+				list-style: none;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			.c7d ul.t li.sky:hover,
+			.c7d ul.t li.sky.on {
+				border: 1px solid #1c7ab0;
+			}
+
+			.c7d ul.t li.sky.lv2 {
+				FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#50b2fb, endColorStr=#a6d4f6);
+				background: -ms-linear-gradient(top, #50b2fb, #a6d4f6);
+				background: -moz-linear-gradient(top, #50b2fb, #a6d4f6);
+				background: -webkit-gradient(linear, 0% 0, 0% 100%, from(#50b2fb), to(#a6d4f6));
+				background: -o-linear-gradient(top, #50b2fb, #a6d4f6);
+			}
+
+			.c7d ul.t li.sky {
+				width: 92px;
+			}
+
+			.c7d ul.t li.sky {
+				border: 1px solid #fff;
+				margin-right: 0;
+				width: 93px;
+				height: 246px;
+				color: #fff;
+			}
+
+			.c7d ul.t li.on {
+				border: 2px solid #accfe9;
+				background: #fff;
+			}
+
+			.c7d ul.t li {
+				position: relative;
+				height: 242px;
+				float: left;
+				background: #f2f9ff;
+				border: 2px solid #f6fbff;
+				width: 89px;
+				text-align: center;
+				margin-right: 2px;
+				cursor: pointer;
+				padding-bottom: 6px;
+			}
+
+			li {
+				list-style: none;
+			}
+
+			.c7d ul.t li h1 {
+				height: 34px;
+				line-height: 34px;
+				font-size: 13px;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<div class="c7d">
+			<ul class="t clearfix" id="list">
+			</ul>
+		</div>
+	
+        <select id="city" onchange="selectChange()">
+			<option value="南宁">南宁</option>
+			<option value="柳州">柳州</option>
+		</select>
+		
+		<!--引入json2-->
+		<script src="https://cdn.bootcss.com/json2/20160511/json2.min.js"></script>
+		
+		<script>
+			
+			//构造LI的HTML代码
+			function createLI(day,wea){
+				var html = '<li class="sky skyid lv2">\
+					<h1>'+day+'</h1>\
+					<big class="png40 d00"></big>\
+					<big class="png40 n00"></big>\
+					<p class="wea">'+wea+'</p>\
+					<p class="tem">\
+						<span>29℃</span>/<i>17℃</i>\
+					</p>\
+					<p class="win">\
+						<em>\
+							<span title="东北风" class="NE"></span>\
+							<span title="东北风" class="NE"></span>\
+						</em>\
+						<i>&lt;3级</i>\
+					</p>\
+					<div class="slid"></div>\
+				</li>';
+				
+				return html;
+			}
+			
+			function getWeather(city){
+				var xhr = new XMLHttpRequest();
+				
+				//监听状态的变化
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState==4 && xhr.status==200){
+						console.log('响应完成');
+						
+						var txt = xhr.responseText;
+						//console.log(typeof(txt));//字符类型数据
+						//将字符型数据转换为json数据
+						var data = JSON.parse(txt);
+						//console.log(typeof(data));
+						
+						var htmlTEXT = '';
+						//循环data.c7d数据
+						for(var i=0;i<data.c7d.length;i++){
+							var day = data.c7d[i].day;
+							//console.log(day);
+							var wea = data.c7d[i].wea;
+							
+							htmlTEXT += createLI(day,wea);
+						}
+						
+						//写入html
+						document.getElementById('list').innerHTML = htmlTEXT;
+					}
+				}
+				
+				xhr.open('GET','http://172.16.173.100/weather.php?city='+city);
+				xhr.send();
+			}
+			
+			getWeather('南宁');
+			
+			//下来菜单事件
+			function selectChange(){
+				
+				var myselect = document.getElementById("city");　　//获取select对象
+				var index = myselect.selectedIndex;　　　　　　　　　//获取被选中的索引
+			    var vv = myselect.options[index].value;　　　　　　//获取被选中的值
+				
+				getWeather(vv);
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

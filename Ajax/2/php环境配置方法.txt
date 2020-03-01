@@ -1,0 +1,4 @@
+1.下载phpstudy，https://m.xp.cn
+2.配置站点
+3.设置网站首页
+4.localhost:端口，ip地址:端口

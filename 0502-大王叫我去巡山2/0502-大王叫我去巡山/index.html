@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link type="text/css" rel="css/stylesheet" href="style.css"/>
+		<style>
+			
+			#wuTai{
+				background-color: #000;
+				width:100%;
+				height:100vh;
+				position: relative;
+			}
+			
+			.xb{
+				margin: 10px;
+				padding: 10px;
+				border:1px solid #fff;
+				width:180px;
+				height: 210px;
+				position: absolute;
+				top:0;
+				left:0;
+			}
+			.xbImg{
+				width:180px; 
+			    height: 180px;
+				background-image: url(images/rw0.gif);
+				position: relative;
+			}
+			
+			.xbName{
+				position: absolute;
+				right:0;
+				top:0;
+				background-color: #fff;
+			}
+			
+			.xbSay{
+				display: none;
+				margin: 5px;
+				position: absolute;
+				height:30px;
+				top:-30px;
+				left:180px;
+				background-color: #ff0000;
+				width:120px;
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		
+		<input type="button" value="new一个兵" onclick="addXb()"/>
+		
+		<div id="wuTai">
+			
+			<!-- <div class="xb">
+				<div class="xbImg">
+					<span class="xbName">小兵A</span>
+				</div>
+				<input type="button" value="巡山"/>
+			</div>
+			
+			<div class="xb">
+				<div class="xbImg">
+					<span class="xbName">小兵B</span>
+				</div>
+				<input type="button" value="巡山"/>
+			</div> -->
+			
+		</div>
+		
+		<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+		
+		<script>
+			
+			var xbSl = 0;//小兵数量
+			
+			//创建小兵对象
+			function xiaoBing(){
+				this.name="";
+				
+				//在舞台上出小兵的HTML结构代码
+				this.create = function(){
+					
+					var xbObj = $( '<div id="xb'+xbSl+'" class="xb" data-index="'+xbSl+'">\
+				<div class="xbImg">\
+					<span class="xbName">'+this.name+'</span>\
+					<div class="xbSay">报告大王：我巡山回来了</div>\
+				</div>\
+				<input type="button" value="巡山" onclick="xunShan('+xbSl+')"/>\
+			</div>');
+			        xbObj.css({top:xbSl*200}).appendTo($('#wuTai'));
+					
+					xbSl = xbSl+1;//小兵数量+1
+					
+				};
+			}
+			
+			//巡山
+			function xunShan (djg){
+				
+				//获取浏览器的宽度
+				var screenWidth = $(document).width();
+				//能走的最远点的X坐标
+				var endPosX= screenWidth-180;//
+				
+				//换走路图
+				$('#xb'+djg).find('.xbImg').css({backgroundImage:"url('images/rw2.gif')"});
+				//运行动画
+				$('#xb'+djg).animate({left:endPosX},7000,function(){
+					//走到右边再走回来
+					//切换图片再进行动画
+					$('#xb'+djg).find('.xbImg').css({backgroundImage:"url('images/rw3.gif')"});
+					$('#xb'+djg).animate({left:0},7000,function(){
+						//回到原点后换图
+						$('#xb'+djg).find('.xbImg').css({backgroundImage:"url('images/rw0.gif')"});
+						//报告大王
+						$('#xb'+djg).find('.xbSay').show();
+					});
+				});
+				
+				//走到头走回来？？？
+			};
+			
+			//新增一个小兵
+			function addXb(){
+				var mingzi = prompt("请设置小兵的名字");
+				var xb1 = new xiaoBing();
+				xb1.name = mingzi;
+				xb1.create();
+			}
+			
+		</script>
+		
+	</body>
+</html>

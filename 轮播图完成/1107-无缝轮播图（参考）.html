@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+	</head>
+	<body>
+		
+		<!--
+		1.先写html
+		2.编写css
+		3.编写脚本
+		-->
+		
+		<div class="banner">
+			<ul class="hot">
+				<li><a href="#"><img src="https://img.zcool.cn/community/017a2f5c733e01a801213f2632668c.jpg@1280w_1l_0o_100sh.jpg"/></a>
+				    <span>1</span>
+				</li>
+				<li><a href="#"><img src="https://img.zcool.cn/community/01a0755ddb4c88a8012129e21ef704.jpg@1280w_1l_2o_100sh.jpg"/></a><span>2</span></li>
+				<li><a href="#"><img src="https://img.zcool.cn/community/01b7285ca1cadda801208f8bd08dd9.jpg@1280w_1l_2o_100sh.jpg"/></a><span>3</span></li>
+				<li><a href="#"><img src="https://img.zcool.cn/community/010b6f5deef973a8012138532fd622.jpg@1280w_1l_2o_100sh.jpg"/></a><span>4</span></li>
+				<li><a href="#"><img src="https://img.zcool.cn/community/018f045ddb4c81a8012053c04b2bec.jpg@1280w_1l_2o_100sh.jpg"/></a><span>5</span></li>
+			</ul>
+			
+			<ul class="dot">
+				<li class="on"></li>
+				<li></li><li></li>
+				<li></li><li></li>
+			</ul>
+			
+			<div class="arrow">
+				<span class="prev">&lt;</span>
+				<span class="next">&gt;</span>
+			</div>
+		</div>
+		
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			
+	
+			var i = 0;//当前在第几张,0表示第一个张
+			var liLen = $('.hot li').length;//当前右多少张幻灯
+			
+			//小原点状态
+			function dotStatus(){
+				$('.dot li').removeClass('on');
+				$('.dot li:eq('+i+')').addClass('on');
+			}
+			
+			//向左
+			function moveLeft(){
+				var l = -(i+1)*600;
+				$('.hot').animate({left:l},'fast',function(){
+					if(i==liLen-1){//在4张切换到第5张后,新增li,用于倒数第1张在切换时动画流畅
+						var first=$('.hot li:eq(0)').clone();
+						$('.hot').append(first);
+					}else if(i==liLen){//在第5张切换到第6张后,清除新增的li
+						$('.hot').css({left:0});
+						i=0;
+						$('.hot li:eq('+liLen+')').remove();
+					}
+					dotStatus();
+				});
+				
+				i++;
+				
+			}
+			
+			//向右
+			function moveRight(){
+				var l = 0;
+				if(i==0){//在第一张前面新增一个li,用于切换时动画流畅
+				    var last=$('.hot li:eq('+(liLen-1)+')').clone();
+				    $('.hot').prepend(last);
+					$('.hot').css({left:-600});//重新调整初始位置
+					
+					$('.hot').animate({left:0},'fast',function(){
+						i=liLen-1;
+						l = -(liLen-1)*600;
+						$('.hot').css({left:l});
+						$('.hot li:eq(0)').remove();
+					});
+					
+					dotStatus();
+				}else{
+					l = -(i-1)*600;
+					$('.hot').animate({left:l},'fast');
+					i--;
+					dotStatus();
+				}
+			}
+			
+			$('.prev').on('click',function(){
+				moveLeft();
+			});
+			
+			$('.next').on('click',function(){
+				moveRight();
+			});
+			
+			//自动播放
+			var t = setInterval('moveLeft()',2000);
+			
+			//鼠标经过时暂停,离开继续
+			$('.hot').on('mouseover',function(){
+				clearInterval(t);
+			})
+			.on('mouseout',function(){
+				t = setInterval('moveLeft()',2000);
+			});
+			
+			
+		</script>
+	</body>
+</html>

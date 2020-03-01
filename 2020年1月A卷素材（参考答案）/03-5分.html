@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="box">
+        我是盒子
+    </div>
+
+    <script>
+        /**
+         * 【分数：5】
+         * 【鼠标经过盒子时改变边框，离开后恢复】
+         * ---------------------------------------------------------------
+         * 请补充以下(1)~(2)处的代码，并将正确的代码填写入
+         */
+
+        //获取对象
+        //var box = (1).getElementById('box'); //请在（1）填入正确的答案【3分】
+		var box = document.getElementById('box'); //请在（1）填入正确的答案【3分】
+
+        //鼠标经过事件
+        //box.(2) = function() { //请在（2）填入正确的答案【2分】
+		box.onmouseover = function() { //请在（2）填入正确的答案【2分】
+            this.style.border = '3px solid red';
+        }
+
+        //鼠标离开事件
+        box.onmouseout = function() {
+            this.style.border = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        
+        body {
+            background-color: #000;
+        }
+        
+        #zhuFu {
+            width: 1200px;
+            height: 548px;
+            background-image: url('images/bg.jpg');
+            position: relative;
+            margin: 50px auto 0 auto;
+            overflow: hidden;
+        }
+        
+        #xnkl {
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 600px;
+            top: 250px;
+        }
+        
+        #words {
+            width: 330px;
+            height: 150px;
+            color: #f9d15d;
+            position: absolute;
+            left: 455px;
+            bottom: -150px;
+        }
+        
+        #words #from {
+            font-size: 16px;
+            border-bottom: 1px solid #f47252;
+            width: 310px;
+            padding: 0 0 10px 0;
+        }
+        
+        #words #wish::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        #words #wish li {
+            float: left;
+            width: 110px;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 180%;
+        }
+        
+        #words #thanks {
+            background-color: #f9d15d;
+            padding: 0 10px;
+            color: #ff0000;
+            line-height: 30px;
+            text-align: center;
+            width: 290px;
+            margin: 20px 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="zhuFu">
+        <img id="xnkl" src="images/xnkl.png" />
+        <div id="words">
+            <p id="from">机电与信息工程学院计算机应用教研室祝您</p>
+            <ul id="wish">
+                <li>身体健康</li>
+                <li>工作顺利</li>
+                <li>事事顺心</li>
+                <li>生活愉快</li>
+                <li>阖家幸福</li>
+                <li>万事如意</li>
+            </ul>
+            <p id="thanks">感谢一路相随，感谢支持和理解</p>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        /**
+         * 【分数：15】
+         * 【动画实现，请使用jquery库实现】
+         * 1.“新年快乐”最终坐标left=300px,top=130px，宽=600px，高=250px
+         * 2.“文字部分”最终坐标left=445px,bottom=110px
+         * 3.“新年快乐”显示完毕，再显示“文字部分”
+         * 4.“文字部分”到达目标坐标后，1秒后再显示“感谢部分”
+         * ---------------------------------------------------------------
+         * 请补充以下(1)~(6)处的代码，并将正确的代码填写入
+         */
+
+        /* $('(1)').animate({ //请在（1）填入正确的答案【2分】
+            (2): 300, //请在（2）填入正确的答案【2分】
+            (3): 130, //请在（3）填入正确的答案【2分】
+            (4): 600, //请在（4）填入正确的答案【2分】
+            (5): 250 //请在（5）填入正确的答案【2分】
+        }, 1000, function() {
+            $('#words').animate({
+                bottom: 110
+            }, 1000, function() {
+                $('(6)').delay((7)).fadeIn("slow"); //请在(6)（7）填入正确的答案【5分】
+            })
+        }); */
+		
+		$('#xnkl').animate({ //请在（1）填入正确的答案【2分】
+		    left: 300, //请在（2）填入正确的答案【2分】
+		    top: 130, //请在（3）填入正确的答案【2分】
+		    width: 600, //请在（4）填入正确的答案【2分】
+		    height: 250 //请在（5）填入正确的答案【2分】
+		}, 1000, function() {
+		    $('#words').animate({
+		        bottom: 110
+		    }, 1000, function() {
+		        $('#thanks').delay(1000).fadeIn("slow"); //请在(6)（7）填入正确的答案【5分】
+		    })
+		});
+    </script>
+</body>
+
+</html>

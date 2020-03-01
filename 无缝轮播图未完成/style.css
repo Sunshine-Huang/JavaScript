@@ -1,0 +1,82 @@
+.banner{
+	width:600px;
+	height:300px;
+	position:relative;
+	overflow:hidden;
+}
+
+.hot{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	width:3000px;
+	height:300px;
+}
+.hot li{
+	width:600px;
+	height:300px;
+	float:left;
+}
+
+
+.hot li img{
+	width:600px;
+	height:300px;
+}
+
+.dot{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	width:82px;
+	height:10px;
+	position:absolute;
+	left:259px;
+	bottom:20px;
+}
+
+.dot li{
+	width:10px;
+	height:10px;
+	background-color:#fff;
+	margin-left:8px;
+	border-radius:5px;
+	float:left;
+}
+.dot .on{
+	background-color:#0f6;
+}
+
+.dot li:first-child{
+	margin-left:0;
+}
+
+.prev{
+	width:30px;
+	height:50px;line-height:50px;
+	background-color:rgba(0,0,0,.6);
+	color:#fff;
+	position:absolute;
+	left:25px;
+	top:125px;
+	text-align:center;
+	cursor:pointer;
+	font-size:18px;
+}
+
+.next{
+	width:30px;
+	height:50px;line-height:50px;
+	background-color:rgba(0,0,0,.6);
+	color:#fff;
+	position:absolute;
+	right:25px;
+	top:125px;
+	text-align:center;
+	cursor:pointer;
+	font-size:18px;
+}
+
+.arrow>span:hover{
+	background-color:rgba(0,255,0,.6);
+}

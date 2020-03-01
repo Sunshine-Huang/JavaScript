@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="banner">
+			<ul class="hot">
+
+				<li><a href="#"><img src="img/1.jpg" /></a></li>
+				<li><a href="#"><img src="img/2.jpg" /></a></li>
+				<li><a href="#"><img src="img/3.jpg" /></a></li>
+				<li><a href="#"><img src="img/4.jpg" /></a></li>
+			</ul>
+
+			<ul class="dot">
+				<li class="on"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+
+			<div class="arrow">
+				<span class="prev">&lt;</span>
+				<span class="next">&gt;</span>
+			</div>
+		</div>
+
+
+		<script>
+			var i = 0;
+			var liLen = $('.hot li').length;
+
+
+			function dotStatus() {
+				$('.dot li').removeClass('on');
+				$('.dot li:eq(' + i + ')').addClass('on');
+			}
+
+
+			function moveLeft() {
+				var l = -(i + 1) * 1200;
+				$('.hot').animate({
+					left: l
+				}, 'fast', function() {
+					if (i == liLen - 1) {
+						var first = $('.hot li:eq(0)').clone();
+						$('.hot').append(first);
+					} else if (i == liLen) {
+						$('.hot').css({
+							left: 0
+						});
+						i = 0;
+						$('.hot li:eq(' + liLen + ')').remove();
+					}
+					dotStatus();
+				});
+
+				i++;
+
+			}
+
+
+			function moveRight() {
+				var l = 0;
+				if (i == 0) {
+					var last = $('.hot li:eq(' + (liLen - 1) + ')').clone();
+					$('.hot').prepend(last);
+					$('.hot').css({
+						left: -1200
+					});
+
+					$('.hot').animate({
+						left: 0
+					}, 'fast', function() {
+						i = liLen - 1;
+						l = -(liLen - 1) * 1200;
+						$('.hot').css({
+							left: l
+						});
+						$('.hot li:eq(0)').remove();
+					});
+
+					dotStatus();
+				} else {
+					l = -(i - 1) * 1200;
+					$('.hot').animate({
+						left: l
+					}, 'fast');
+					i--;
+					dotStatus();
+				}
+			}
+
+			$('.prev').on('click', function() {
+				moveLeft();
+			});
+
+			$('.next').on('click', function() {
+				moveRight();
+			});
+
+
+			var t = setInterval('moveLeft()', 3000);
+
+
+			$('.hot').on('mouseover', function() {
+					clearInterval(t);
+				})
+				.on('mouseout', function() {
+					t = setInterval('moveLeft()', 3000);
+				});
+		</script>
+	</body>
+</html>

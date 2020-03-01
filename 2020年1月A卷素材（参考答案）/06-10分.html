@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width: 500px;
+            border-collapse: collapse;
+            border-left: 1px solid #006400;
+            border-top: 1px solid #006400;
+        }
+        
+        table td {
+            border-right: 1px solid #006400;
+            border-bottom: 1px solid #006400;
+            font-size: 14px;
+            padding: 3px;
+        }
+        
+        table thead td {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <td>序号</td>
+                <td>账号</td>
+                <td>姓名</td>
+                <td>籍贯</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>xiaoming</td>
+                <td>小明</td>
+                <td>广西南宁市</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>xiaohong</td>
+                <td>小红</td>
+                <td>广西宾阳县</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>xiaogang</td>
+                <td>小刚</td>
+                <td>广西三江县</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        /**
+         * 【分数：10】
+         * 【斑马纹表格，请使用jquery库实现】
+         * 表头行的背景颜色为#006400
+         * 偶数行的背景颜色为#F0FFC0
+         * 鼠标经过数据行时，其背景颜色为#90FF00，离开后恢复
+         * ---------------------------------------------------------------
+         * 请补充以下(1)~(4)处的代码，并将正确的代码填写入
+         */
+
+        //实现表头行的背景颜色为#006400
+        //$('(1)').css({ //请在（1）填入正确的答案【2分
+		$('table>thead>tr').css({ //请在（1）填入正确的答案【2分】
+            backgroundColor: '#006400'
+        });
+
+        $('table>tbody>tr:even').css({
+            backgroundColor: '#F0FFC0'
+        });
+
+        //鼠标经过数据行（不包括表头）
+        //$('(2)').on('mouseover', function() { //请在（2）填入正确的答案【3分】
+		$('table>tbody>tr').on('mouseover', function() { //请在（2）填入正确的答案【3分】
+            //获取当前行的背景颜色
+            //var oldBg = $(this).css('(3)'); //请在（3）填入正确的答案【2分】
+			var oldBg = $(this).css('background-color'); //或者backgroundColor请在（3）填入正确的答案【2分】
+            //把当前的背景颜色保存到data-oldBg标签属性
+            $(this).attr('data-oldBg', oldBg);
+
+            //设置新的背景颜色
+            $(this).css({
+                backgroundColor: '#90FF00'
+            });
+        });
+
+        //鼠标离开数据行
+        $('table>tbody>tr').on('mouseout', function() {
+            //获取当前的data-oldBg标签属性值
+            var oldBg = $(this).attr('data-oldBg');
+
+            //设置背景颜色为旧的颜色
+            $(this).css({
+                //backgroundColor: (4) //请在（4）填入正确的答案【3分】
+				backgroundColor: oldBg //请在（4）填入正确的答案【3分】
+            });
+        });
+    </script>
+</body>
+
+</html>

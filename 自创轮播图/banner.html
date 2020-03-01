@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>轮播图</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="banner">
+			<!-- 轮播图片 -->
+			<ul class="hot">
+				<li><a href="#"><img src="images/1.jpg"></a></li>
+				<li><a href="#"><img src="images/2.jpg"></a></li>
+				<li><a href="#"><img src="images/3.jpg"></a></li>
+				<li><a href="#"><img src="images/4.jpg"></a></li>
+			</ul>
+			<!-- 底部小圆点 -->
+			<ul class="dot">
+				<li class="on"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div class="arrow">
+				<span class="prev">&lt</span>
+				<span class="next">&gt</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			/**
+			 * 在最后一张（5）后面加入第1张的内容
+			 */
+			function dotStatus(){
+				$('.dot li').removeClass('on');
+				$('.dot li:eq('+i+')').addClass('on');
+			}
+			
+			
+			
+			var first=$('.hot li:eq(0)').clone();
+			$('.hot').append(first);
+				
+			var i = 0;//当前在第几张,0表示第一个张
+			
+			//向左
+			//animate(属性值,速度,回调函数)
+			
+			$('.prev').on('click',function(){
+				var l = -(i+1)*1200;
+				$('.hot').animate({left:l},'fast',function(){
+					if(i==4){
+						var first=$('.hot li:eq(0)').clone();
+						$('.hot').append(first);
+						$('.hot').css({left:0});
+						i=0;
+						$('.hot li:eq('+liLen+')').remove();
+					}
+					dotStatus();
+				});
+				i++;
+			});
+			
+			// 向右
+		$('.next').on('click',function(){
+			var liLen = $('.hot li').length-1;
+			var l = 0;
+			if(i==0){
+				l=-(liLen-1)*1200;
+				i=4;
+				$('.hot').css({left:l});
+				$('.hot li:eq(0)').remove();
+				dotStatus();
+			}else{
+				l = -(i-1)*1200;
+				i--;
+				$('.hot').animate({left:l},'fast');
+				dotStatus();
+			}
+			
+		});
+	
+		</script>
+	</body>
+</html>

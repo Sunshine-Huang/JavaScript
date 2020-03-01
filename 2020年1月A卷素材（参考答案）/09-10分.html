@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #slider {
+            width: 430px;
+            margin: auto;
+        }
+        
+        #bigPic {
+            width: 100%;
+            height: 430px;
+        }
+        
+        #bigPic img {
+            width: 100%;
+            height: 430px;
+        }
+        
+        #smallPic {
+            width: 430px;
+            height: 100px;
+            margin-top: 10px;
+        }
+        
+        #smallPic div {
+            width: 100px;
+            height: 100px;
+            margin-left: 10px;
+            float: left;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+        
+        #smallPic div:first-child {
+            margin-left: 0;
+        }
+        
+        #smallPic div:hover {
+            opacity: 0.9;
+        }
+        
+        #smallPic div img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        #smallPic div.active {
+            opacity: 1;
+        }
+        
+        #smallPic div.active img {
+            width: 97px;
+            height: 97px;
+            border: 3px solid #f00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="slider">
+        <div id="bigPic">
+            <img src="images/01.jpg" />
+        </div>
+
+        <div id="smallPic">
+            <div class="active"><img src="images/01.jpg" /></div>
+            <div><img src="images/02.jpg" /></div>
+            <div><img src="images/03.jpg" /></div>
+            <div><img src="images/04.jpg" /></div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        /**
+         * 【分数：10】
+         * 【商品轮播图，请使用jquery库实现】
+         * 1.单击小图，显示大图
+         * 2.同时小图显示高亮外边框
+         * ---------------------------------------------------------------
+         * 请补充以下(1)~(4)处的代码，并将正确的代码填写入
+         */
+
+        $('#smallPic>div').on('click', function() {
+            //获取img的src地址
+			//var src = $(this).find('(1)').attr('(2)'); //请在（1）(2)填入正确的答案【4分】
+            var src = $(this).find('img').attr('src'); //请在（1）(2)填入正确的答案【4分】
+
+            //给大图赋值
+			// $('(3)').attr('src', src); //请在（3）填入正确的答案【3分】
+            $('#bigPic>img').attr('src', src); //请在（3）填入正确的答案【3分】
+
+            //去掉旧的高亮active类
+            $('.active').removeClass('active');
+
+            //给自己加高亮active类
+			//$((4)).addClass('active'); //请在（4）填入正确的答案【3分】
+            $(this).addClass('active'); //请在（4）填入正确的答案【3分】
+        });
+    </script>
+
+
+
+</body>
+
+</html>

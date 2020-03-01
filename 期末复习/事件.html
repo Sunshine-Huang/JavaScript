@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<input type="button" id="btn" value="这是一个按钮" onclick="aa(event)"/>
+
+		<script>
+			/**
+			 *一.事件的绑定(3)
+			 * 1.直接写在便签上
+			 * 2.动态绑定事件
+			 * 3.事件监听
+			 * 
+			 * 二、事件流及事件冒泡
+			 */
+			
+			function aa(e){
+				alert('弹出框');
+				e.stopPropagation();
+			}
+			
+			var btn = document.getElementById('btn');
+			//动态绑定
+			btn.onmouseenter = function(){
+				btn.style.backgroundColor='red';
+			}
+			
+			btn.addEventListener('mouseout',function(){
+				btn.style.backgroundColor='green';
+			});
+			
+			
+			//
+			document.body.onclick = function(){
+				document.body.style.backgroundColor='blue';
+			}
+
+			
+		</script>
+	</body>
+</html>

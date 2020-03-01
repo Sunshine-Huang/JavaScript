@@ -1,0 +1,10 @@
+body,div,ul,li,a{margin: 0;padding: 0;}
+.sidebar{
+	width: 500px;height: 500px;border: 1px solid #F0F8FF;
+	line-height: 30px;
+}
+.newsBox{
+	list-style-type: none;
+}
+.newsBox li{width: 500px;height: 30px;display: inline-block;}
+.newsBox a{color: grey;text-decoration: none;}
