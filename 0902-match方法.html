@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			
+			var str1 = "It's is the shorthand of it is";
+			
+			//g表示全局匹配，用于在找到第一个匹配之后仍然继续查找。
+			var reg1 = /it/gi;
+			var result1 = str1.match(reg1);
+			console.log(result1);
+			
+			//查找可以it为开头的字符串,使用的^
+			/*
+			定位符“^”，可用于匹配字符串开始的位置。
+			定位符“$”，可用于匹配字符串结尾的位置
+			*/
+			var str2 ='12011019011';
+			var reg2 = /^13/gi;
+			var result2 = str2.match(reg2);
+			console.log(result2);
+			
+		</script>
+	</body>
+</html>

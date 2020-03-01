@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr1 = ['小明', '小红', '小花', '小刚'];
+        var arr2 = [18, 26, 19, 21];
+        var max = arr2[0];
+        var maxindex = 0;
+        for (var i = 1; i < arr2.length; i++) {
+            if (arr2[i] > max) {
+                max = arr2[i];
+                maxindex = i
+            }
+        }
+        document.write("年龄最大者的姓名" + arr1[maxindex]);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style>
+			
+			#dateTimeBox{
+				width:420px;
+				margin: 50px auto 0 auto;
+				background-color: #CC0000;
+				
+				/*第一种解决盒子高度为0的问题*/
+				/*height:60px;*/
+			}
+			
+			/*第二种解决盒子高度为0的问题，使用after伪元素解决*/
+			#dateTimeBox:after{
+				content:'';display:block;clear: both;
+			}
+			
+			
+			#timeBox{
+				width:200px;
+				margin-left: 20px;
+				float:left;
+				
+			}
+			#hm{
+				display: inline-block;
+				font-size:48px;
+				margin: 0;
+			}
+			
+			#s{
+				display: inline-block;
+				font-size:24px;
+				margin: 0;
+			}
+			
+			#dateBox{
+				width:180px;
+				float:left;
+				
+				padding-top: 10px;
+			}
+			#dateBox>span{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div id="dateTimeBox">
+			
+			<div id="timeBox">
+				<h2 id="hm">20:58</h2>
+				<h4 id="s">36</h4>
+			</div>
+			
+			<div id="dateBox">
+				<span>星期一</span>
+				<span>2019年9月16日</span>
+			</div>
+		</div>
+		
+		
+	</body>
+</html>

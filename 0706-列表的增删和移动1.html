@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			ul{
+				list-style-type: none;
+				margin: 0;padding: 0;
+			}
+			
+			li{
+				margin-top: 20px;
+			}
+			
+			input{
+				height: 20px;
+				padding:3px;
+				width:200px;
+			}
+			
+			button{
+				height: 28px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<li id="item1">
+				<input type="text" value="PHP"> <a href="#">[上移]</a> <a href="#">[下移]</a> <a href="#" onclick="yiChu()">[删除]</a>
+			</li>
+			
+			<li id="item2">
+				<input type="text" value="Javascript"> <a href="#">[上移]</a> <a href="#">[下移]</a> <a href="#" onclick="yichu2()">[删除]</a>
+			</li>
+			
+			<li id="item3">
+				<input type="text" value="Python"> <a href="#">[上移]</a> <a href="#">[下移]</a> <a href="#" onclick="yichu3()">[删除]</a>
+			</li>
+			
+			<li id="item4">
+				<input type="text" value="C#"> <a href="#">[上移]</a> <a href="#">[下移]</a> <a href="#" onclick="yichu4()">[删除]</a>
+			</li>
+		</ul>
+		
+		<h4>添加项目</h3>
+		添加到列表：<input type="text" value=""> <button>添加</button> <button>取消</button>
+		
+		
+		<script>
+			/**
+			 * 删除节点
+			 * parentNode.removeChild(childNode);
+			 * 父节点.removeChild(子节点);
+			 */
+			
+			function yiChu(){
+				var item1 = document.getElementById('item1');
+				document.getElementById('list').removeChild(item1);
+			}
+			function yichu2() {
+				var item2=document.getElementById('item2');
+				document.getElementById('list').removeChild(item2);
+			}
+			function yichu3() {
+				var item3=document.getElementById('item3');
+				document.getElementById('list').removeChild(item3);
+			}
+			function yichu4() {
+				var item4=document.getElementById('item4');
+				document.getElementById('list').removeChild(item4);
+			}
+		</script>
+		
+	</body>
+</html>

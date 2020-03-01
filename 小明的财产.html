@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var gz = 4000;
+        var sum = 0;
+        for (i = 0; i <= 12; i++)
+            sum = sum + (sum * 0.0005) + gz;
+        document.write("小明1年后的财产是" + sum + "元");
+        var lhq = sum % 100;
+        document.write("小明所剩零花钱为" + lhq + "元")
+    </script>
+</body>
+
+</html>

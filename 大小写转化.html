@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>大小写转换</h1>
+
+    <div>源字符串: <input type="text" id="ss" value="abc" /> </div>
+    <div>
+        <input type="button" value="转大写" onclick="deal('upper')">
+        <input type="button" value="转小写" onclick="deal('lower')">
+    </div>
+    <div>转换结果: <input type="text" id="rr" value="" /> </div>
+
+    <script>
+        function deal(t) {
+            //获取源
+            var s2 = document.getElementById('ss').value;
+
+            if (t == 'upper') {
+                s2 = s2.toUpperCase();
+            } else if (t == 'lower') {
+                s2 = s2.toLowerCase();
+            }
+
+            document.getElementById('rr').value = s2;
+
+        }
+    </script>
+
+</body>
+
+</html>

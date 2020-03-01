@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div>
+			<h1>春宫曲</h1>
+			<ul id="shiGe">
+				<li>昨夜风开露井桃</li>
+				<li>未央前殿月轮高</li>
+				<li>平阳歌舞新承宠</li>
+				<li>帘外春寒赐锦袍</li>
+			</ul>
+			
+			<p>来自唐诗三百首</p>
+		</div>
+		
+		<script>
+			/*
+			不能更改HTML结构和属性，
+			修改诗歌表格颜色为红色，
+			来源为蓝色；
+			诗歌正文为绿色；
+			*/
+			var a=document.getElementById('shiGe');
+		   var fater=a.previousElementSibling;
+		   fater.style.color="red"
+		   var p=a.nextElementSibling
+		   p.style.color='blue';
+		   var zw=a.children;
+		   console.log(zw)
+		   zw[0].style.color='green';
+		    zw[1].style.color='green';
+			 zw[2].style.color='green';
+			  zw[3].style.color='green';
+		   
+		   
+		</script>
+		
+	</body>
+</html>

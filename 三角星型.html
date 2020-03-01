@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //控制行数
+        for (var i = 1, l = 5; i <= l; ++i) {
+            //减少空格
+            var b = l - i;
+            for (var k = 0; k < b; ++k) {
+                document.write("&nbsp");
+            }
+            //令行数等于列数
+            var s = i;
+            //控制列数
+            for (var j = 0; j < s; ++j) {
+                document.write("*")
+            }
+            document.write("<br>")
+        }
+    </script>
+</body>
+
+</html>

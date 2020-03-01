@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.cart{
+				width:800px;
+				border-spacing: 0;
+			}
+			
+			.cart th{
+				border-bottom:2px solid #666666;
+				height:50px;
+			}
+			
+			.cart td{
+				border-bottom:1px dotted #CCCCCC;
+				height:50px;
+			}
+			
+			.cart-reduce,.cart-add{
+				background-color: #CC0000;
+				color:#fff;
+				width:24px;
+				text-align: center;
+				border-radius: 3px;
+				/*
+				span标签属于内联标签，没有宽度属性
+				block：块元素，不允许其他内容在其两边
+				inline：内联元素，
+				*/
+			   display: inline-block; /**/
+			}
+			
+			.cart-num{
+				display: inline-block;
+				width:40px;
+				border:1px solid #CC0000;
+				text-align: center; /*文本水平居中*/
+			}
+		</style>
+	</head>
+	<body>
+		
+		<table class="cart">
+			<tr>
+				<th>全选</th>
+				<th>商品</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+				<th>操作</th>
+			</tr>
+			
+			<tr>
+				<td>
+					<input type="checkbox"/>
+				</td>
+				<td>户外冲锋衣女三合一可拆卸加绒加厚两件套男潮牌韩国冬季防风外套</td>
+				<td>279</td>
+				<td>
+					
+					<span class="cart-reduce">-</span>
+					<span class="cart-num">3</span>
+					<span class="cart-add">+</span>
+				</td>
+				<td>23492</td>
+				<td>
+					<span>删除</span>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<input type="checkbox"/>
+				</td>
+				<td>源点云境儿童故事投影仪</td>
+				<td>279</td>
+				<td>
+					<span class="cart-reduce">-</span>
+					<span class="cart-num">1</span>
+					<span class="cart-add">+</span>
+				</td>
+				<td>23492</td>
+				<td>
+					<span>删除</span>
+				</td>
+			</tr>
+			
+		</table>
+		
+	</body>
+</html>

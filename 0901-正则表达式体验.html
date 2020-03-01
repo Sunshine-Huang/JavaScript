@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script>
+			
+			var str = 'ABC123abc456';
+			
+			//正则表达式
+			var reg = /abcd/;
+			
+			var result = reg.exec(str);
+			
+			if(result==null){
+				document.write('字符串不存在abcd');
+			}else{
+				document.write('字符串存在abcd');
+			}
+			
+			//document.write(result);
+			
+		</script>
+		
+	</body>
+</html>

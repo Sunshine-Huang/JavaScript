@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			input[type=text]{
+				width:60px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<form id="form">
+			年度<input type="text" name="year" id="year">
+			月份<input type="text" name="month" id="month">
+			<input type="submit" value="查询"/>
+		</form>
+		
+		<div id="result"></div>
+		
+		<script>
+			
+			var form = document.getElementById('form');
+			var year = document.getElementById('year');
+			var result = document.getElementById('result');
+			
+			form.onsubmit = function(){
+				//进行验证表单
+				return checkYear();
+				
+			}
+			
+			//失去焦点
+			year.onblur = function(){
+				return checkYear();
+			}
+			
+			//验证年度
+			function checkYear(){
+				var reg =/^\d{4}$/;
+				if(year.value.match(reg)==null){
+					result.innerHTML = '年度有误';
+					return false;
+				}else{
+					result.innerHTML = '年度无误';
+					return true;
+				}
+			}
+			
+			//验证月份
+			function checkMonth(){
+				
+			}
+			
+		</script>
+		
+	</body>
+</html>

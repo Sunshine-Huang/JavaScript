@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style>
+			
+			#box{
+				width:600px;
+				height:400px;
+				margin:auto;
+			}
+			#smallBox{
+				width:300px;
+				height:400px;
+				float:left;
+				
+				position: relative; /*相对定位，以自己原来（本应在的）位置进行定位*/
+			}
+			
+			#bigBox{
+				width:300px;
+				height:400px;
+				float:left;
+				background-color: #00CC00;
+				
+				
+			}
+			
+			#bigBox img{
+				display: none;
+			}
+			
+			#mask{
+				width:100px;
+				height:100px;
+				background-color: #fff;
+				
+				/*
+				绝对定位
+				以前辈节点(拥有定位属性的)为参考定位，如果存在拥有定位属性的前辈节点，那么将以body为参考定位*/
+				position: absolute;
+				left:100px;
+				top:150px;
+				opacity:0.5;
+				cursor: move;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+		
+			<div id="smallBox">
+				<img src="https://gd4.alicdn.com/imgextra/i1/266969832/O1CN01KzOtvG2MV6gRBk8FW_!!266969832.jpg_400x400.jpg"/>
+				<div id="mask"></div>
+			</div>
+			
+			<div id="bigBox">
+				<img src="https://gd4.alicdn.com/imgextra/i1/266969832/O1CN01KzOtvG2MV6gRBk8FW_!!266969832.jpg_1200x1200.jpg"/>
+			</div>
+			
+		</div>
+		
+		<span id="test"></span>
+		
+		<script>
+			document.getElementById('smallBox').onmousemove = function(e){
+				//鼠标在页面上的X,Y轴坐标
+				var pageX = e.pageX;
+				var pageY = e.pageY;
+				
+				//document.getElementById('test').innerHTML = 'x='+pageX+',y='+pageY;
+				
+				//smallBox距离浏览器左边和上方的距离
+				var smallX = document.getElementById('smallBox').offsetLeft;
+				var smallY = document.getElementById('smallBox').offsetTop;
+				
+				//计算出鼠标在smallBox中的坐标位置
+				var mX = pageX-smallX;
+				var mY = pageY-smallY;
+				
+				//document.getElementById('test').innerHTML = 'x='+mX+',y='+mY;
+				
+				//设置遮罩层的坐标
+				document.getElementById('mask').style.left = (mX-50) +'px';
+				document.getElementById('mask').style.top = (mY-50) +'px';
+			}
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div>
+			<h1>春宫曲</h1>
+			<ul id="shiGe">
+				<li>昨夜风开露井桃</li>
+				<li>未央前殿月轮高</li>
+				<li>平阳歌舞新承宠</li>
+				<li>帘外春寒赐锦袍</li>
+			</ul>
+			
+			<p>来自唐诗三百首</p>
+		</div>
+		
+		<script>
+			/*
+			获取节点的属性
+			请在开发者工具下查看
+			,获取shiGe节点的前一个节点，后一个节点，还有子节点
+			*/
+		   var node = document.getElementById('shiGe');
+		   
+		   //parentNode 父节点
+		   var fNode = node.parentNode;
+		   console.log(fNode);
+		   
+		   //previousSibling 前一个兄弟节点
+		   //previousElementSibling 前一个兄弟标签元素节点
+		   var prevNode = node.previousSibling;
+		   var prevNode2 = node.previousElementSibling;
+		   console.log(prevNode);
+		   console.log(prevNode2);
+		   
+		   //nextSibling 仅挨着的下一个兄弟节点
+		   //nextElementSibling 仅挨着的下一个兄弟标签元素节点
+		   var nextNode = node.nextSibling;
+		   var nextNode2 = node.nextElementSibling;
+		   console.log(nextNode);
+		   console.log(nextNode2);
+		   
+		   //childNodes
+		   var allChilds = node.childNodes;
+		   var allChilds2 = node.children;
+		   console.log("所有的子节点");
+		   console.log(allChilds);
+		   console.log(allChilds2);
+		   
+		</script>
+		
+	</body>
+</html>

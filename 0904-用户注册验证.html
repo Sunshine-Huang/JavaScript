@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>注册</title>
+
+		<style>
+			html,
+	body {
+		margin: 0px;
+		height: 100%;
+	}
+	
+	body {
+			background: #f1f1f1;
+		
+		font-family: "Microsoft YaHei", "MicrosoftJhengHei", STHeiti, MingLiu;
+	}
+	
+	.div_label {
+		float: left;
+		padding: 5px;
+		font-size: 15px;
+		font-weight: 500;
+	}
+	
+	.div_label span {
+		line-height: 38px;
+		padding: 0 5px;
+		width: 60px;
+	}
+	
+	.div_label img {
+		height: 30px;
+		margin: 2px;
+		padding: 0px 7px;
+	}
+	
+	.div_control {
+		float: right;
+		padding: 5px;
+		width: calc(100% - 100px);
+	}
+	
+	.div_control input {
+		border: 0px;
+		margin: 5px;
+		float: right;
+		line-height: 28px;
+		font-size: 15px;
+		text-align: right;
+		padding-right: 5px;
+		width: 100%;
+		outline: none;
+		text-align: left;
+	}
+	
+	.div_control button {
+		width: 88px;
+		float: right;
+		background-color: #F2F2F2;
+		height: 28px;
+		padding: 4px 8px;
+		line-height: 20px;
+		font-size: 14px;
+		font-weight: 500;
+		margin: 5px 5px 0 0;
+		border: 1px solid #DBDBDB;
+		border-radius: 6px;
+		outline: none;
+	}
+	
+	.div_row {
+		border-bottom: 1px solid #E8E8E8;
+		background-color: #fff;
+	}
+	.div_row:after{
+		content:'';display: block;clear: both;
+	}
+	.div_col:after{
+		content:'';display: block;clear: both;
+	}
+	
+	.div_control input{
+		width:calc(100% - 16px);
+	}
+	
+	.btn_reg {
+		border: none;
+		margin: 40px 6% 16px 6%;
+		width: 88%;
+		height: 1.8em;
+		background-color: #05a0e0;
+		border-radius: 4px;
+		font-size: 20px;
+		color: #FFFFFF;
+		outline: none;
+		-webkit-tap-highlight-color: transparent;
+	}
+	
+	
+	.red {
+		color: #ff6600;
+		display: inline-block;
+	}
+	.tip{
+		float: right;margin-top: -30px;background:#fff;color: #ff6600;
+	}
+</style>
+
+	</head>
+	<body sroll="no" onclick="onload">
+		<form name="form1" onsubmit="return checkreg()" action="#" method="post">
+
+			<div class="div_row">
+				<div class="div_label"><span> 用户名称</span></div>
+				<div class="div_control">
+					<input type="text" name="username" id="username" placeholder="请填写用户名称">
+					<span class="tip" id="usernameTip"></span>
+					</input>
+				</div>
+			</div>
+
+			<div class="div_row">
+				<div class="div_label"><span>密码</span></div>
+				<div class="div_control"><input type="password" name="password" id="password" onkeydown="" value="" placeholder="6~20位数字、字符任意组合">
+					<span class="tip" id="passwordTip"></span></input>
+				</div>
+			</div>
+
+			<div class="div_row">
+				<div class="div_label"><span style="width:70px;">确认密码</span></div>
+				<div class="div_control"><input type="password" name="passagain" id="passagain" onkeydown="" value="" placeholder="请再次输入密码">
+					<span class="tip" id="passagainTip"></span>
+					</input>
+				</div>
+			</div>
+
+
+			<div class="div_row">
+				<div class="div_label"><span style="width:70px;">手机号码</span></div>
+				<div class="div_control"><input type="text" id="phone" name="phone" onkeydown="" value="" placeholder="请输入手机号码">
+					<span class="tip" id="phoneTip"></span>
+				</div>
+			</div>
+
+			<div class="div_row">
+				<div class="div_label"><span style="width:70px;">电子邮箱</span></div>
+				<div class="div_control"><input type="text" id="email" name="email" onkeydown="" value="" placeholder="请输入电子邮箱">
+					<span class="tip" id="emailTip"></span>
+				</div>
+			</div>
+
+			<button id="submit" class="btn_reg">注册</button>
+			
+		</form>
+
+		<script type="text/javascript">
+			
+			//检测用户名
+			/* function checkUserName(){
+				var reg =/^[a-zA-Z]{4,12}$/;
+				var v = document.getElementById('username').value;
+				if(v.match(reg)==null){
+					document.getElementById('usernameTip').innerHTML = '用户名称必须是4-12位的英文字母';
+					return false;
+				}else{
+					document.getElementById('usernameTip').innerHTML = '';
+					return true;
+				}
+			}
+			
+			document.getElementById('username').onblur = function(){
+				checkUserName();
+			} */
+			
+			/**通用验证方法
+			 * @param {Object} id 表单对象id
+			 * @param {Object} reg 正则表达式
+			 * @param {Object} error 验证出错时的提示信息
+			 */
+			
+			function checkInput(id,reg,error){
+				var v = document.getElementById(id).value;
+				if(v.match(reg)==null){
+					document.getElementById(id+'Tip').innerHTML = error;
+					return false;
+				}else{
+					document.getElementById(id+'Tip').innerHTML = '';
+					return true;
+				}
+			}
+			
+			/*失去焦点事件*/
+			document.getElementById('username').onblur = function(){
+				checkInput('username',/^[a-zA-Z]{4,12}$/,'用户名称必须是4-12位的英文字母');
+			}
+			
+			document.getElementById('password').onblur = function(){
+				checkInput('password',/^[a-zA-Z0-9_]{6,20}$/,'长度6~20，字母，数字，下划线');
+			}
+			
+			document.getElementById('passagain').onblur = function(){
+				checkInput('passagain',a,'两次输入的密码不一致');
+			}
+			document.getElementById('phone').onblur = function(){
+				checkInput('phone',/^1[34578][0-9]{9}$/,'手机号码必须填写');
+			}
+			
+			document.getElementById('email').onblur = function(){
+				checkInput('email',/^(\w+(\_|\-|\.)*)+@(\w+(\-)?)+(\.\w{2,})+$/,'邮箱必须填写');
+			}
+			
+			/**
+			 * 注册事件
+			 */
+			function checkreg(){
+				var c1 = checkInput('username',/^[a-zA-Z]{4,12}$/,'用户名称必须是4-12位的英文字母');
+				var c2 = checkInput('password',/^[a-zA-Z0-9_]{6,20}$/,'长度6~20，字母，数字，下划线');
+				var c4 = checkInput('phone',/^1[34578][0-9]{9}$/,'手机号码必须填写');
+				var c5 = checkInput('email',/^(\w+(\_|\-|\.)*)+@(\w+(\-)?)+(\.\w{2,})+$/,'邮箱必须填写');
+				
+				//ttyyrx@qq.com
+				
+					var a=document.getElementById('password').value;
+					
+					
+						var c6=	checkInput('passagain',a,'两次输入的密码不一致');
+					
+					
+				
+			
+			}
+			
+		</script>
+
+
+	</body>
+</html>

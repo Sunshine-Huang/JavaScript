@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style>
+			.inputRow{
+				padding: 0 0 15px 0;
+			}
+			.inputRow:after{
+				content: ''; clear: both; display: block;
+			}
+			.inputRow>label{
+				float:left;
+				width:80px;
+				text-align: right;
+			}
+			
+			.inputRow>div{
+				margin-left:90px;
+			}
+			
+			.inputRow>div .error{
+				color:red;
+				font-size:12px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<h3>会员注册</h3>
+		
+		<div class="inputRow">
+			<label>账号</label>
+			<div>
+				<input type="text" id="userName"/>
+				<span class="error" id="userNameTip">*必填</span>
+			</div>
+		</div>
+
+		<div class="inputRow">
+			<label>密码</label>
+			<div><input type="password" id="userPwd"/>
+				<span class="error" id="userPwdTip">*必填</span>
+			</div>
+		</div>
+
+		<div class="inputRow">
+			<label>重复密码</label>
+			<div><input type="password" id="userPwd2"/>
+				<span class="error" id="userPwd2Tip"></span>
+			</div>
+		</div>
+		
+		<div class="inputRow">
+			<label>头像</label>
+			<div><input type="file" id="userAvatar"/>
+			<span class="error" id="userAvatarTip">*必填</span>
+			</div>
+		</div>
+		
+		<div class="inputRow">
+			<label>&nbsp;</label>
+			<div><input type="button" value="注册" onclick="register()" /></div>
+		</div>
+		
+		<script>
+			/**
+			 * 完成注册表单的验证功能
+			 * 一、账号验证
+			 *   1.账号必须填写
+			 *   2.账号长度必须在3~20位字符之间
+			 *   3.账号不能包含admin字符
+			 * 二、密码验证
+			 *   1.密码必须填写
+			 *   2.密码长度必须在6~20位字符之间
+			 *   3.重复密码必须跟密码一致
+			 * 三、头像验证
+			 *   1.头像图片必须上传
+			 *   2.头像文件上传只能上传以jpg|jpeg|gif|png为扩展名的文件
+			 */
+			function register(){
+				var userName=getElementById('userName').value;
+				if(userName.length<3||userName.length>20){
+					document.getElementById('userNameTip').innerHTML='账号长度必须在3~20位字符之间';
+				}else if(userName.toLowerCase().indexOf('admin')!=-1){
+					document.getElementById('userNameTip').innerHTML='账号不能包含admin字符';
+				}else{
+					document.getElementById('userNameTip').innerHTML='';
+				}
+				var userPwd=getElementById('userPwd').value;
+				if(userPwd.length<6||userPwd.length>20){
+					document.getElementById('userPwdTip').innerHTML='账号长度必须在3~20位字符之间';
+				}else if(userPwd.toLowerCase().indexOf('admin')!=-1){
+					document.getElementById('userPwdTip').innerHTML='账号不能包含admin字符';
+				}else{
+					document.getElementById('userPwdTip').innerHTML='';
+				}
+				var userPwd2=document.getElementById('userPwd2').value;
+				if(userPwd!=userPwd2){
+					document.getElementById('userPwd2Tip').innerHTML='重复密码必须跟密码一致';
+				}else{
+					document.getElementById('userPwd2Tip').innerHTML='';
+				}
+				var userAvatar=document.getElementById('userAvatar').value;
+				if(userAvatar.length==0){
+					document.getElementById('userAvatarTip').innerHTML='头像图片必须上传';
+				}else{
+					var poto=userAvatar.lastIndexoOf(.);
+					var ext=userAvatar.substing(poto+1).to:pwerCase();
+					if(ext!='gif'&&ext!='png'&&ext!='jpg'&&ext!='jpeg'){
+						document.getElementById('userAvatarTip').innerHTML='头像文件上传只能上传以jpg|jpeg|gif|png为扩展名的文件';
+					}else{
+						document.getElementById('userAvatarTip').innerHTML='';
+					}
+				}
+			}
+		</script>
+		
+	</body>
+</html>

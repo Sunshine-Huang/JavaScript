@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- saved from url=(0130)file:///C:/Users/Administrator/Downloads/%E4%BD%9C%E4%B8%9A07-%2D%E8%BA%AB%E9%AB%98%E4%BD%93%E9%87%8D%E6%8C%87%E6%95%B0%20(1).html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>身高体重指数计算</title>
+
+    <style>
+        #panel {
+            width: 310px;
+            padding: 15px;
+            border: 2px solid #666;
+            border-radius: 5px;
+            margin: 100px auto 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+        
+        .form-group label {
+            width: 60px;
+            text-align: right;
+            float: left;
+            display: block;
+            margin-right: 15px;
+        }
+        
+        .form-group .form-control {
+            float: left;
+        }
+        
+        .form-group .form-control input[type="text"] {
+            height: 30px;
+            padding: 2px;
+            outline: none;
+            border-width: 1px;
+            border-color: #666;
+        }
+        
+        .form-group .form-control input[type="text"]:focus {
+            border-color: firebrick;
+        }
+        
+        #btnStart {
+            border: none;
+            background-color: brown;
+            line-height: 34px;
+            border-radius: 5px;
+            color: #fff;
+            padding: 0 15px;
+        }
+        
+        #btnStart:hover {
+            background-color: firebrick;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="panel">
+
+        <div class="form-group">
+            <label>性别</label>
+            <div class="form-control">
+                <input type="radio" name="sex" id="sex1" checked="" value="1"> 男
+                <input type="radio" name="sex" id="sex0" value="0"> 女
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>身高</label>
+            <div class="form-control">
+                <input type="text" id="shengao"> cm
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>体重</label>
+            <div class="form-control">
+                <input type="text" id="tizhong"> kg
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>&nbsp;</label>
+            <div class="form-control">
+                <input type="button" id="btnStart" value="马上参与" onclick="start">
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>结果</label>
+            <div class="form-control">
+                <input type="text" id="result">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /**
+                                                        *身高体重指数,通过身高体重检测，给与用户提示（过肥，标准，过瘦）
+                                                        1、女性：(身高/cm-70)*0.6/KG=标准体重
+                                                        2、男性：(身高/cm-80)*0.7/KG=标准体重
+                                                        */
+        function start() {
+            var c = document.getElementById("sex").checked;
+            if (c == true) {
+                console.log("nan");
+            } else {
+                console.log("nv")
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style>
+			.tab-head{
+				border-top:1px solid #000;
+				border-left:1px solid #000;
+				border-right:1px solid #000;
+				padding: 1px;
+			}
+			.tab-head-div{
+				width:25%;
+				border-left:1px solid #fff;
+				box-sizing: border-box;
+				float:left;
+				text-align: center;
+				background-color: #000000;
+				line-height: 30px;
+				color:#fff;
+				cursor: pointer;
+			}
+			.tab-head-div:first-child{
+				border-left:none;
+			}
+			
+			.tab-head-div.current{
+				background-color: #fff;
+				color:#000000;
+			}
+			.tab-head-div:hover{
+				background-color: #aaa;
+			}
+			
+			
+			
+			.tab-body{
+				border:1px solid #000;
+			}
+			.tab-body-div{
+				height: 100px;
+				padding: 10px;
+				display: none;
+			}
+			.tab-body-div.current{
+				display: block;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<div class="tab-box">
+			
+			<div class="tab-head">
+				<div id="tab1" class="tab-head-div current"  onclick="select(1)">标签一</div>
+				<div id="tab2" class="tab-head-div" onclick="select(2)">标签二</div>
+				<div id="tab3" class="tab-head-div" onclick="select(3)">标签三</div>
+				<div id="tab4" class="tab-head-div" onclick="select(4)">标签四</div>
+			</div>
+			
+			<div class="tab-body">
+				<div id="a1" class="tab-body-div current">11</div>
+				<div id="a2" class="tab-body-div">22</div>
+				<div id="a3" class="tab-body-div">33</div>
+				<div id="a4" class="tab-body-div">44</div>
+			</div>
+			
+		</div>
+		
+		<script>
+			function select(n){
+				//所用的都去掉current类
+				document.getElementById('tab1').classList.remove('current');
+				document.getElementById('tab2').classList.remove('current');
+				document.getElementById('tab3').classList.remove('current');
+				document.getElementById('tab4').classList.remove('current');
+				
+				//给自己加current类
+				document.getElementById('tab'+n).classList.add('current');
+				
+				//补充在下面
+				document.getElementById('a1').classList.remove('current');
+				document.getElementById('a2').classList.remove('current');
+				document.getElementById('a3').classList.remove('current');
+				document.getElementById('a4').classList.remove('current');
+				
+				//给自己加current类
+				document.getElementById('a'+n).classList.add('current');
+			}
+		</script>
+		
+	</body>
+</html>

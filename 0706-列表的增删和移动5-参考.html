@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			ul{
+				list-style-type: none;
+				margin: 0;padding: 0;
+			}
+			
+			li{
+				margin-top: 20px;
+			}
+			
+			input{
+				height: 20px;
+				padding:3px;
+				width:200px;
+			}
+			
+			button{
+				height: 28px;
+			}
+
+			a{
+				display: inline-block;
+				line-height: 30px;
+				background-color:#ac0303;
+				font-size: 13px;
+				text-decoration: none;
+				color:#fff;
+				padding: 0 15px;
+				border-radius: 2px;
+			}
+
+			a:hover{
+				background-color: #d30c0c;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<li>
+				<input type="text" value="1.PHP"> <a href="#" onclick="up(this)">上移</a> <a href="#" onclick="down(this)">下移</a> <a href="#" onclick="yiChu(this)">删除</a>
+			</li>
+			
+			<li>
+				<input type="text" value="2.Javascript"> <a href="#" onclick="up(this)">上移</a> <a href="#" onclick="down(this)">下移</a> <a href="#" onclick="yiChu(this)">删除</a>
+			</li>
+			
+			<li>
+				<input type="text" value="3.Python"> <a href="#" onclick="up(this)">上移</a> <a href="#" onclick="down(this)">下移</a> <a href="#" onclick="yiChu(this)">删除</a>
+			</li>
+			
+			<li>
+				<input type="text" value="4.C#"> <a href="#" onclick="up(this)">上移</a> <a href="#" onclick="down(this)">下移</a> <a href="#" onclick="yiChu(this)">删除</a>
+			</li>
+		</ul>
+		
+		<h4>添加项目</h3>
+		添加到列表：<input type="text" value=""> <button>添加</button> <button>取消</button>
+		
+		
+		<script>
+
+			/**
+			 * 下移
+			 * @param {Object} _this
+			 */
+			 function down(_this){
+				var pNode = _this.parentNode;//获取父节点
+				var nextNode = pNode.nextElementSibling;
+
+				//1-判断是否是最后一个,通过判断后一个节点是否存在来来实现
+				if(nextNode==null){
+					alert('你已经是最后一个，无法再下移');
+					return false;//通过return false来，跳出函数，避免运行后面的语句
+				}
+				
+				//2-创建一个跟自己的内容一样的节点
+				var li = document.createElement('li');
+				li.innerHTML=pNode.innerHTML;
+
+				//3-获取后一个节点的后一个节点（后后节点）
+				var nextNextNode = nextNode.nextElementSibling;
+
+				//4-判断后后节点是否存在，如存在使用insertBefore方法实现，否则当前节点是倒数第2个节点，需要使用appendChild来实现
+				if(nextNextNode!=null){
+					document.getElementById('list').insertBefore(li,nextNextNode);
+				}else{
+					document.getElementById('list').appendChild(li);
+				}
+				
+				//5-删除自己
+				document.getElementById('list').removeChild(pNode);
+			}
+			
+			/**
+			 * 上移
+			 * @param {Object} _this
+			 */
+			function up(_this){
+				var pNode = _this.parentNode;//获取父节点
+				var prevNode = pNode.previousElementSibling;
+
+				//1-判断是否是第一个,通过判断前一个节点是否存在来来实现
+				if(prevNode==null){
+					alert('你已经是第一个，无法再上移');
+					return false;//通过return false来，跳出函数，避免运行后面的语句
+				}
+				
+				//2-复制一个放到自己的兄弟节点的前面
+				//2-创建一个跟自己的内容一样的节点放到兄弟节点的前面
+				var li = document.createElement('li');
+				li.innerHTML=pNode.innerHTML;
+				document.getElementById('list').insertBefore(li,prevNode);
+				
+				//3-删除自己
+				document.getElementById('list').removeChild(pNode);
+			}
+			
+			
+			/**
+			 * 删除节点
+			 * parentNode.removeChild(childNode);
+			 * 父节点.removeChild(子节点);
+			 * this：上下文，作为实参的话，它=引发事件的事件源
+			 */
+			
+			function yiChu(_this){
+				//通过节点的层级关系，找到删除按钮的父节点
+				//_this这里及时就是a标签
+				var pNode =_this.parentNode;
+				document.getElementById('list').removeChild(pNode);
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

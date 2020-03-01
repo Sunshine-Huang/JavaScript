@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style>
+			#sfq{
+				width:1050px;
+				height:300px;
+				background-color: #000000;
+			}
+			
+			.preview{
+				width:100px;
+				height:300px;
+				float:left;
+			}
+			.preview img{
+				opacity: 0.3;/*透明*/
+			}
+			.active .preview img{
+				opacity: 1;
+			}
+			
+			.content{
+				width:450px;
+				height:300px;
+				float:left;
+				background-color: #05A0E0;
+				display: none;/*默认不显示*/
+			}
+			.active .content{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+		地址：https://www.jqhtml.com/yanshi?demourl=wp-content%2Fuploads%2F2017%2F01%2Ftx%2Ftx20170174%2F&demotitle=jQuery横向图片手风琴
+		-->
+		<div id="sfq">
+			
+			<div class="item active">
+				<div class="preview">
+					<img src="https://www.jqhtml.com/wp-content/uploads/2017/01/tx/tx20170174/images/20141226132540254074.jpg"/>
+				</div>
+				<div class="content">
+					内容1
+				</div>
+			</div>
+			
+			<div class="item">
+				<div class="preview">
+					<img src="https://www.jqhtml.com/wp-content/uploads/2017/01/tx/tx20170174/images/20141212205639563966.jpg"/>
+				</div>
+				<div class="content">
+					内容2
+				</div>
+			</div>
+			
+			<div class="item">
+				<div class="preview">
+					<img src="https://www.jqhtml.com/wp-content/uploads/2017/01/tx/tx20170174/images/20141203132722272255.jpg"/>
+				</div>
+				<div class="content">
+					内容3
+				</div>
+			</div>
+			
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			
+		</div>
+	</body>
+</html>

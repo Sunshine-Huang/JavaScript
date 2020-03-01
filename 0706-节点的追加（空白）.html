@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<div>
+			<h1>春宫曲</h1>
+			<ul id="shiGe">
+				<li>昨夜风开露井桃</li>
+				<li>未央前殿月轮高</li>
+				<li>平阳歌舞新承宠</li>
+			</ul>
+			
+			<button onclick="add()">追加完整的诗歌</button>
+		</div>
+		
+		<script>
+			/*
+			帘外春寒赐锦袍
+			在诗歌的UL标签内追加LI标签，后面追加
+			*/
+		   function add(){
+			   var addLi=document.createElement('li');
+			   addLi.innerHTML='帘外春寒赐锦袍';
+			   // 在后面加
+			   // document.getElementById('shiGe').appendChild(addLi);     
+			   //在全面加
+			   document.getElementById('shiGe').insertBefore(addLi);
+		   }
+			
+		</script>
+		
+	</body>
+</html>

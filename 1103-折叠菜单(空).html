@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			.menu{
+				margin: 40px 0px 0px 40px;
+				width: 300px;
+			}
+			.item_head{
+				height: 30px;
+				line-height: 30px;
+				background-color: aquamarine;
+				text-align: center;
+				color: white;
+			}
+			.item_content{
+				border-left:1px solid #05A0E0;
+				border-right:1px solid #05A0E0;
+				border-bottom:1px solid #05A0E0;
+			}
+		</style>
+		
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>
+		
+		<div class="menu">
+			
+			<div class="menu_item">
+				<div class="item_head" onclick="ch1()">信息管理</div>
+				<div class="item_content" id="c1">
+					<ul>
+					<li>张三</li>
+					<li>张五</li>
+					<li>张四</li>
+				    </ul>
+				</div>
+			</div>
+			
+			<div class="menu_item">
+				<div class="item_head" onclick="ch2()">商品管理</div>
+				<div class="item_content" id="c2"><ul>
+					<li>发货单上几乎</li>
+					<li>张富商大贾五</li>
+					<li>张给对方四</li>
+				    </ul></div>
+			</div>
+			
+			<div class="menu_item">
+				<div class="item_head" onclick="ch3()">用户管理</div>
+				<div class="item_content" id="c3"><ul>
+					<li>好的数十个</li>
+					<li>和规范化五</li>
+					<li>张公司是个四</li>
+				    </ul></div>
+			</div>
+			
+		</div>
+		
+		
+		<script type="text/javascript">
+			function ch1(){
+					
+				if( $('#c1').is(':hidden') ){
+					$('#c1').slideDown();
+				}else{
+					$('#c1').slideUp();
+				}
+			}
+			ch1();
+			function ch2(){
+					
+				if( $('#c2').is(':hidden') ){
+					$('#c2').slideDown();
+				}else{
+					$('#c2').slideUp();
+				}
+			}
+			ch2();
+			function ch3(){
+					
+				if( $('#c3').is(':hidden') ){
+					$('#c3').slideDown();
+				}else{
+					$('#c3').slideUp();
+				}
+			}
+			ch3();
+		</script>
+		
+	</body>
+</html>

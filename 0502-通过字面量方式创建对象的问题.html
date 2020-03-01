@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			
+			
+			// 定义一个对象
+			var chaoRen = {};
+			chaoRen['name'] = "无名";
+			chaoRen['yizhuo'] = '内裤外穿';
+			chaoRen['fei'] = function(){
+				document.write(this.name+ "带我飞");
+			}
+			chaoRen['tiao'] = function(){
+				document.write(this.name+ "带我跳");
+			}
+			
+			chaoRen.name = "小明";
+			chaoRen.fei();//带我飞
+			
+			
+			chaoRen.name = "小红";
+			chaoRen.fei();//带我飞
+			
+			
+			//命令小明带我跳????做不到
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

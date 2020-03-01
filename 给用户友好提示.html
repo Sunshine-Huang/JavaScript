@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>友好提示</title>
+</head>
+
+<body>
+    <script>
+        var hour = prompt('请输入时间');
+        var hour = parseInt(hour);
+        if (hour >= 7 && hour <= 8) {
+            document.write("早睡早起身体好");
+        }
+        if (hour >= 11 && hour <= 12) {
+            document.write("中午记得吃午饭");
+        }
+        if (hour >= 13 && hour <= 14) {
+            document.write("午睡时间到了");
+        }
+        if (hour >= 18 && hour <= 20) {
+            document.write("与家人一起吃晚饭了");
+        } else {
+            document.write("不要熬夜，该睡觉了");
+        }
+    </script>
+</body>
+
+</html>

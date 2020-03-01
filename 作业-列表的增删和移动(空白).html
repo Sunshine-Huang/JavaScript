@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			ul{
+				list-style-type: none;
+				margin: 0;padding: 0;
+			}
+			
+			li{
+				margin-top: 20px;
+			}
+			
+			input{
+				height: 20px;
+				padding:3px;
+				width:200px;
+			}
+			
+			button{
+				height: 28px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<li>
+				<input type="text" value="PHP"> <a href="#" onclick="moveLi(this)">[上移]</a> <a href="#" onclick="dowmMove(this)">[下移]</a> <a href="#" onclick="yiChu(this)">[删除]</a>
+			</li>
+			
+			<li>
+				<input type="text" value="Javascript"> <a href="#" onclick="moveLi(this)">[上移]</a> <a href="#" onclick="dowmMove(this)">[下移]</a> <a href="#" onclick="yiChu(this)">[删除]</a>
+			</li>
+		</ul>
+		
+		<h4>添加项目</h3>
+		添加到列表：<input type="text" value=""> <button>添加</button> <button>取消</button>
+		<script type="text/javascript">
+			function moveLi(_this){
+				var pNode = _this.parentNode;
+				if(pNode.previousElementSibling==null){
+					alert('你已经是第一个，无法再上移');
+					return false;
+					}
+					var li = document.createElement('li');
+						li.innerHTML=pNode.innerHTML;
+						document.getElementById('list').insertBefore(li,pNode.previousElementSibling);
+						document.getElementById('list').removeChild(pNode);
+			}
+			function dowmMove(_this){
+				var pNode = _this.parentNode;
+				var li = document.createElement('li');
+				li.innerHTML=pNode.innerHTML;
+				document.getElementById('list').appendChild(li,pNode.previousElementSibling);
+				document.getElementById('list').removeChild(pNode);
+			}
+			function yiChu(_this){
+				var pNode =_this.parentNode;
+				document.getElementById('list').removeChild(pNode);
+			}
+		</script>
+	</body>
+</html>

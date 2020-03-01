@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+
+		<div>
+			<h1>春宫曲</h1>
+			<ul id="shiGe">
+				<li id="hang1">昨夜风开露井桃</li>
+				<li id="hang2">未央前殿月轮高</li>
+				<li>平阳歌舞新承宠</li>
+			</ul>
+
+			<button onclick="zhuiJia()">追加到后面</button>
+			<button onclick="chaRu2()">插入第二行</button>
+			<button onclick="chaRu1()" style="background-color: #CC0000;color:#fff; border: none;">插入到第一行</button>
+		</div>
+
+		<script>
+			/*
+			帘外春寒赐锦袍
+			在诗歌的UL标签内追加LI标签，后面追加
+			*/
+
+			function zhuiJia() {
+				//1-创建一个标签节点
+				var li4 = document.createElement('li');
+
+				li4.innerHTML = '帘外春寒赐锦袍';
+
+				//2-附加到目标，------父节点.appendChild(子节点)---
+				document.getElementById('shiGe').appendChild(li4);
+			}
+
+			function chaRu2() {
+				//1-创建一个标签节点
+				var li2 = document.createElement('li');
+				li2.innerHTML = '22222222222222222';
+				
+				//获取第二行
+				var hang2 = document.getElementById('hang2');
+				
+				//2-附加到目标
+				document.getElementById('shiGe').insertBefore(li2,hang2);
+				
+
+			}
+			
+			function chaRu1(){
+				//1-创建一个标签节点
+				var li1 = document.createElement('li');
+				li1.innerHTML = '11111111111';
+				
+				//获取第一行对象
+				var hang1= document.getElementById('hang1');
+				
+				//2-附加到指定的目标
+				document.getElementById('shiGe').insertBefore(li1,hang1);
+			}
+		</script>
+
+	</body>
+</html>

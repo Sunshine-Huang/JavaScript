@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<!--font-awesome字体图标的CSS样式引入-->
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		
+		<style>
+			.slider{
+				width:500px;
+				height:300px;
+				background-color: #CC0000;
+				position: relative;
+			}
+			
+			.slider-inner{
+				width:500px;
+				height:300px;
+			}
+			
+			
+			.slider-item{
+				width:500px;
+				height:300px;
+				position: absolute;
+				display: none;
+			}
+			.slider-item.active{
+				display: block;
+			}
+			
+			
+			.slider-item>img{
+				width:100%;
+				height:300px;
+				
+				object-fit: cover;/*建议搜索object-fit了解*/
+			}
+			
+			.slider-controls{
+				width:50px;
+				height:50px;
+				/*background-color: #000000;*/
+				/*使用rgba来制作背景透明*/
+				background-color: rgba(0,0,0,0.8);
+				text-align: center;
+				position: absolute;
+				top:125px;
+			}
+			
+			.slider-prev{
+				left:20px;
+			}
+			
+			.slider-next{
+				right:20px;
+			}
+			
+			.slider-controls .fa{
+				color:#fff;
+				line-height: 50px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="slider">
+			
+			<div class="slider-inner">
+				<div class="slider-item active">
+					<img src="https://n.sinaimg.cn/news/transform/579/w340h239/20190925/1582-ifaench0654954.jpg"/>
+				</div>
+				
+				<div class="slider-item">
+					<img src="https://n.sinaimg.cn/news/transform/360/w680h480/20190925/9b7b-ifaencf9835455.jpg"/>
+				</div>
+				
+				<div class="slider-item">
+					<img src="https://n.sinaimg.cn/news/transform/245/w110h135/20190924/5619-ifaencf4752853.jpg"/>
+				</div>
+			</div>
+			
+			<div class="slider-controls slider-prev">
+				<i class="fa fa-bitcoin fa-2x"></i>
+			</div>
+			
+			<div class="slider-controls slider-next">
+				<i class="fa fa-user fa-2x"></i>
+			</div>
+			
+		</div>
+		
+	</body>
+</html>

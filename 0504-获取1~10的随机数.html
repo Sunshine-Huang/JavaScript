@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			/*
+			获取1~10的随机整数
+			*/
+		   
+		   //var m = 1;
+		   //var n = 11;
+		   //var sz = Math.random()*(n-m)+m;
+		   // var sz = Math.random()*10+1;
+		   // 
+		   // sz = Math.floor(sz);
+		   
+		   //输出调试
+		   // console.log(sz);
+		   
+		   //1-获取50~100的整数
+		   var m=55;
+		   var n=101;
+		   var a=Math.random()*(n-m)+m;
+		   a=Math.floor(a);
+		   console.log(a)
+		   
+		   /*2-抽奖
+		   现有学生学号，对学号进行抽奖
+		   */
+		  var xhArr=[
+			  '2018001','2018002','2018100','2018022','2018054','2018008','2018365','2018153','2018789','2018620',
+		  ]
+		   
+		   
+		var m=0;
+		   var n=9;
+		   var b=Math.random()*(n-m)+m;
+		   b=Math.floor(b);
+		 var zjmd=xhArr[b]
+		 console.log(zjmd)
+		</script>
+		
+	</body>
+</html>

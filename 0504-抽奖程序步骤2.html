@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style>
+			#main{
+				border:2px solid #FF0000;
+				padding: 15px;
+				margin: 50px auto 0 auto;
+				width:350px
+			}
+			
+			#zjhm{
+				font-size:48px;
+				color:#FF0000;
+				text-align: center;
+				margin-bottom: 50px;
+			}
+			#main>div{
+				text-align: center;
+			}
+			#main>div>input{
+				height: 30px;
+				background: #cc0000;
+				border:none;
+				color: #fff;
+				padding: 0 20px;
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="main">
+			<div id="zjhm">0000000</div>
+			<div>
+				<input type="button" value="开始" onclick="cj_start()">
+				<input type="button" value="结束" onclick="cj_stop()">
+			</div>
+		</div>
+		
+		<script>
+			
+			var xhArr=[
+				'2018001','2018002','2018100','2018022','2018054','2018008','2018365','2018153','2018789','2018620'
+			];
+			
+			var t ;//全局变量
+			
+			function cj_start(){
+				var sz = Math.floor(Math.random()*10);
+				var zjmd = xhArr[sz];
+				document.getElementById('zjhm').innerHTML = zjmd;
+				
+				//定时器
+				t = setTimeout("cj_start()",50);
+			}
+			
+			function cj_stop(){
+				clearTimeout(t);
+			}
+			
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			
+			//通过构造函数来创建对象
+			//this代表对象本身
+			//1-创建对象
+			function chaoRen(){
+				this.name = "无名";
+				//var age = 18;
+				this.fei = function(){
+					document.write(this.name+'在飞<br/>');
+				};
+				
+				this.tiaoWu = function(){
+					document.write(this.name+'在跳舞<br/>');
+				}
+			}
+			
+			//调用,必须实例化对象
+			//2-调用对象
+			var cr1 = new chaoRen();
+			cr1.name = "小明";
+			cr1.fei();
+
+            var cr2 = new chaoRen();
+			cr2.name = "小红";
+			cr2.fei();	
+					
+			cr1.tiaoWu();
+			
+			
+			//[动手操作]假如你是妖怪大王,要创建出一个小兵对象,然后分别new出俩个小兵去巡山.
+			function xiaoBing(){
+				this.name="";
+				this.xunShan = function(dd){
+					document.write("大王叫我去"+dd+"巡山<br/>");
+				};
+			};
+			
+			var p1 = new xiaoBing();
+			p1.name="001";
+			p1.xunShan("南山");
+			
+			var p2 = new xiaoBing();
+			p2.name="002";
+			p2.xunShan("北山");
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

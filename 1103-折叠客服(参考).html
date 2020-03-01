@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--引入-->
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<style>
+			body{
+				margin: 0; padding: 0;
+			}
+			.kf{
+				width:150px;
+				position: absolute;
+				
+			}
+			.kf ul{
+				background-color: #ff0066;
+				list-style-type: none;
+				margin: 0;
+				padding: 20px 0;
+				float:left;
+				width:120px;
+			}
+			.kf ul li{
+				font-size:12px;
+				line-height: 30px;
+				text-align: center;
+				color:#fff;
+			}
+			.kf ul li:hover{
+				
+			}
+			
+			.kf>.img{
+				width:120px;
+				background-color: #ff0066;
+				text-align: center;
+				font-size: 48px;
+				color:#fff;
+				padding-top: 20px;
+			}
+			.kf>.title{
+				width:30px;
+				float:left;
+				background-color: #ee0066;
+				text-align: center;
+				position: absolute;
+				right:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="kf">
+			<div class="img"><i class="fa fa-user-circle-o"></i></div>
+			<ul>
+				<li><span>客服：小明</span></li>
+				<li><span>客服：小刚</span></li>
+				<li><span>客服：小李</span></li>
+				<li><span>售后专员：小红</span></li>
+			</ul>
+			<div class="title">客户服务</div>
+		</div>
+		
+		<div style="height:2000px;width:1000px;margin:auto;clear:both;
+		 border:1px solid #333;">
+		    正文内容
+		</div>
+		
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			var menuYloc = $(".kf").offset().top;  
+			$(window).scroll(function () {  
+				var offsetTop = menuYloc + $(window).scrollTop() + "px";  
+				$(".kf").animate({ top: offsetTop }, { duration: 600, queue: false });  
+			}); 
+		</script>
+		
+		<script>
+			
+			//$('.title').click();//小于2.0
+			$('.title').on('click',function(){
+				
+				
+				//获取元素的样式属性值
+				/* var left = $('.kf').css('left');
+				if(left=='0px'){
+					//修改元素的样式
+					$('.kf').css({left:-120});
+				}else{
+					$('.kf').css({left:0});
+				} */
+				
+				var xPos = $('.kf').position().left; //获取元素当前的X轴坐标
+				if(xPos==0){
+					//使用自定义动画
+					$('.kf').animate({left:-120},1500);
+				}else{
+					$('.kf').animate({left:0},1500);
+				}
+				
+				
+				
+			});
+			
+			//基础较好同学可以自行练习
+			//https://www.html5tricks.com/jquery-accordion-image-player.html
+		</script>
+		
+		
+	</body>
+</html>

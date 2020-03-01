@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style>
+			
+			#box{
+				width:600px;
+				height:400px;
+				margin:auto;
+			}
+			#smallBox{
+				width:300px;
+				height:400px;
+				float:left;
+				
+				position: relative; /*相对定位，以自己原来（本应在的）位置进行定位*/
+			}
+			
+			#bigBox{
+				width:300px;
+				height:400px;
+				float:left;
+				background-color: #00CC00;
+				
+				overflow: hidden;/*溢出隐藏*/
+				position: relative;
+			}
+			
+			#bigBox img{
+				/*display: none;*/
+				
+				position: absolute;
+			}
+			
+			#mask{
+				width:100px;
+				height:100px;
+				background-color: #fff;
+				background-image: url('https://gtms01.alicdn.com/tps/i4/T12pdtXaldXXXXXXXX-2-2.png');
+				
+				/*
+				绝对定位
+				以前辈节点(拥有定位属性的)为参考定位，如果存在拥有定位属性的前辈节点，那么将以body为参考定位*/
+				position: absolute;
+				left:100px;
+				top:150px;
+				opacity:0.5;
+				cursor: move;
+				
+				 display: none; 
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+		
+			<div id="smallBox">
+				<img src="https://gd4.alicdn.com/imgextra/i1/266969832/O1CN01KzOtvG2MV6gRBk8FW_!!266969832.jpg_400x400.jpg"/>
+				<div id="mask"></div>
+			</div>
+			
+			<div id="bigBox">
+				<img id="bigImg" src="https://gd4.alicdn.com/imgextra/i1/266969832/O1CN01KzOtvG2MV6gRBk8FW_!!266969832.jpg_1200x1200.jpg"/>
+			</div>
+			
+		</div>
+		
+		<span id="test"></span>
+		
+		<script>
+			
+			//根据id获取对象
+			function $(id){
+				return document.getElementById(id);
+			}
+			
+			
+			$('smallBox').onmouseout = function(e){
+				//隐藏遮罩层
+				$('mask').style.display='none';
+			};
+			
+			$('smallBox').onmousemove = function(e){
+				//显示遮罩层
+				$('mask').style.display='block';
+				
+				//鼠标在页面上的X,Y轴坐标
+				var pageX = e.pageX;
+				var pageY = e.pageY;
+				
+				//smallBox距离浏览器左边和上方的距离
+				var smallX = $('smallBox').offsetLeft;
+				var smallY = $('smallBox').offsetTop;
+				
+				//计算出鼠标在smallBox中的坐标位置
+				var mX = pageX-smallX;
+				var mY = pageY-smallY;
+				
+				//遮罩层的坐标
+				var markX = (mX-50);
+				var markY = (mY-50);
+				
+				//设置限定范围
+				if(markX<0){
+					markX = 0;
+					$('mask').style.left = '0px';
+				}else if(markX<=200){
+					$('mask').style.left = markX +'px';
+				}else{
+					markX = 200;
+					$('mask').style.left = '200px';
+				}
+				
+				if(markY<0){
+					markY = 0;
+					$('mask').style.top = '0px';
+				}else if(markY<=300){
+					$('mask').style.top = markY +'px';
+				}else{
+					markY = 300;
+					$('mask').style.top = '300px';
+				}
+				
+				/*
+				小图尺寸，300*400
+				大图尺寸，900*1200
+				*/
+				
+				var maxMoveX = 900-300;
+				var markMoveX = 200;
+				var rateX = maxMoveX/markMoveX;
+				
+				var maxMoveY = 1200-400;
+				var markMoveY = 300;
+				var rateY = maxMoveY/markMoveY;
+				
+				$('bigImg').style.left = -markX*rateX+'px';
+				$('bigImg').style.top = -markY*rateY+'px';
+				
+			}
+		</script>
+		
+	</body>
+</html>
